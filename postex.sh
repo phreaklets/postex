@@ -72,4 +72,4 @@ else
     echo "[-] No SSH DSA key present in $HOME/.ssh/id_dsa"
 fi
 
-# clear bash history
+# TODO clear bash history
