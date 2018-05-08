@@ -14,6 +14,42 @@ then
 else
     echo "[-] No LSB release file present"
 fi
+if [ -e /etc/SUSE-release ]
+then
+    echo "[+] SUSE release version $(cat /etc/SUSE-release)"
+else
+    echo "[-] No SUSE release file present"
+fi
+if [ -e /etc/redhat-release ]
+then
+    echo "[+] Red Hat release version $(cat /etc/redhat-release)"
+else
+    echo "[-] No Red Hat release file present"
+fi
+if [ -e /etc/fedora-release ]
+then
+    echo "[+] Fedora release version $(cat /etc/fedora-release)"
+else
+    echo "[-] No Fedora release file present"
+fi
+if [ -e /etc/slackware-release ]
+then
+    echo "[+] Slackware release version $(cat /etc/slackware-release)"
+else
+    echo "[-] No Slackware release file present"
+fi
+if [ -e /etc/debian-release ]
+then
+    echo "[+] Debian release version $(cat /etc/debian-release)"
+else
+    echo "[-] No Debian release file present"
+fi
+if [ -e /etc/gentoo-release ]
+then
+    echo "[+] Gentoo release version $(cat /etc/gentoo-release)"
+else
+    echo "[-] No Gentoo release file present"
+fi
 echo "------------------------------------------------------------------------------------------"
 echo "[+] current user $(id)"
 echo "------------------------------------------------------------------------------------------"
