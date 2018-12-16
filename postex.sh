@@ -128,12 +128,12 @@ echo "--------------------------------------------------------------------------
 if [ -e /usr/bin/users ]
 then
     echo "[+] User accounts"
-    users
+    /usr/bin/users
 else
-    echo "[-] dscl not present - this machine is likely not a MacOS machine"
+    echo "[-] /usr/bin/users not present"
 fi
 
-# check for dscl MacOS query tool
+# check for scutil MacOS query tool
 echo "------------------------------------------------------------------------------------------"
 if [ -e /usr/sbin/scutil ]
 then
@@ -143,7 +143,7 @@ else
     echo "[-] scutil not present - this machine is likely not a MacOS machine"
 fi
 
-# check for dscl MacOS query tool
+# check for dsconfigad MacOS query tool
 echo "------------------------------------------------------------------------------------------"
 if [ -e /usr/sbin/dsconfigad ]
 then
@@ -151,7 +151,7 @@ then
     dsconfigad -show | grep "Active Directory Forest" | cut -d '=' -f 2
     dsconfigad -show | grep "Active Directory Domain" | cut -d '=' -f 2
 else
-    echo "[-] scutil not present - this machine is likely not a MacOS machine"
+    echo "[-] dsconfigad not present - this machine is likely not a MacOS machine"
 fi
 
 
