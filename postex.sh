@@ -50,6 +50,13 @@ then
 else
     echo "[-] No Gentoo release file present"
 fi
+if [ -e /usr/bin/sw_vers ]
+then
+    echo "[+] MacOS release version $(sw_vers -productVersion)"
+else
+    echo "[-] No MacOS version information present"
+fi
+
 echo "------------------------------------------------------------------------------------------"
 echo "[+] current user $(id)"
 echo "------------------------------------------------------------------------------------------"
@@ -89,7 +96,12 @@ else
 fi
 echo "------------------------------------------------------------------------------------------"
 echo "[+] local listening ports (non-root)"
-netstat -anop 2>/dev/null | grep LISTEN | cut -d " " -f 15 | grep ::: | cut -c 4-
+if uname -s | grep Darwin
+then
+    netstat -anv | grep LISTEN
+else
+    netstat -anop 2>/dev/null | grep LISTEN | cut -d " " -f 15 | grep ::: | cut -c 4-
+fi
 echo "------------------------------------------------------------------------------------------"
 echo "[+] local listening TCP ports (non-root) which are in /etc/services"
 for i in $(netstat -anop 2>/dev/null | grep LISTEN | cut -d " " -f 15 | grep ::: | cut -c 4-); do grep "\b$i/tcp\b" /etc/services; done
